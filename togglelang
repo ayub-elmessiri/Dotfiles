@@ -1,0 +1,11 @@
+#!/bin/bash
+current_layout=$(setxkbmap -query | awk 'END{print $2}')
+if [ $current_layout = "us" ]; then
+    setxkbmap ru
+elif [ $current_layout = "ru" ]; then
+    setxkbmap ar
+else
+    setxkbmap us
+fi
+
+pkill -USR1 slstatus
